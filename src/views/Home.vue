@@ -120,6 +120,12 @@
         <div class="biaoqian">
           <i class="iconfont icon-biaoqian"></i> 订单来源
         </div>
+
+       <div class="sica">
+
+<span>暂无数据</span>
+      </div>
+    
       </div>
 
       <div class="sia"></div>
@@ -426,6 +432,7 @@ export default {
   align-items: center;
 }
 
+
 .xiao {
   width: 97%;
   height: 70%;
@@ -475,6 +482,21 @@ export default {
   position: relative;
   left: 2%;
   top: -5%;
+}
+
+.sica{
+
+width: 100%;
+height: 90%;
+display: flex;
+margin-top: 15px;
+font-weight: bolder;
+font-size: 30px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+  
 }
 
 .sid {

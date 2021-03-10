@@ -17,7 +17,7 @@
 
         <!------------------------------------------顶部栏是数组文字加图标选项渲染------------------------------------------------>
         <div class="zhi1" v-for="(item, index) in list" :key="index">
-          <div @click="menu(item,index)">
+          <div   class="top_zhi"   @click="menu(item,index)">
             <Icon :type="item.icon" color="#BDC5C8"></Icon>{{ item.name }}
           </div>
         </div>
@@ -76,11 +76,6 @@
         </Dropdown>
       </div>
     </div>
-
-
-
-
-
 <!----------------更换主题的对话框-------------->
  <Modal
         v-model="modal1"
@@ -99,16 +94,7 @@
         </div>
    
     </Modal>
-
-
 <!----------------更换主题的对话框-------------->
-
-
-
-
-
-
-
 
     <div class="bottom">
       <!------------------------------------------侧边栏数组文字加图标第一项选项渲染----------------------------------------------->
@@ -159,6 +145,7 @@
                 </Menu-item>
               </Submenu>
             </div>
+
           </Menu>
         </div>
       </div>
@@ -192,7 +179,6 @@
                   <Icon :type="item.icona"></Icon>
                 </div>
               </template>
-
               <Menu-item
                 :name="indexa - (indexa + 1)"
                 v-for="(itema, indexa) in arr2"
@@ -207,19 +193,33 @@
           </Menu>
         </div>
       </div>
-
-      <div class="bottom_right">
+      <div class="bottom_right"   v-if="flag === true">
         <div class="bottom_top">
           <div class="dianjis" v-for="(item, index) in arr3" :key="index">
             <div
               :class="flaga === index ? 'dianji1' : 'dianji'"
-              @click="dj(index)"
+              @click="dj(item,index)"
             >
               {{ item.name }}<Icon type="ios-close" @click="del(item, index)" />
             </div>
           </div>
         </div>
         <div class="ziluyou">
+          <router-view></router-view>
+        </div>
+      </div>
+      <div class="bottom_right1"  v-if="flag===false" >
+        <div class="bottom_top1">
+          <div class="dianjis1" v-for="(item, index) in arr3" :key="index">
+            <div
+              :class="flaga === index ? 'dianji3' : 'dianji2'"
+              @click="dj(item,index)"
+            >
+              {{ item.name }}<Icon type="ios-close" @click="del(item, index)" />
+            </div>
+          </div>
+        </div>
+        <div class="ziluyou1">
           <router-view></router-view>
         </div>
       </div>
@@ -441,8 +441,19 @@ export default {
       this.arr3 = arra;
     },
 
-    dj(index) {
-      this.flaga = index;
+    dj(item,index) {
+      console.log(this.arr3);
+     this.flaga = index;
+this.arr3.map((item,index)=>{
+ 
+
+
+})
+
+
+
+
+
     },
 
 
@@ -533,7 +544,7 @@ cancel(){
   align-items: center;
 
   .leibie {
-    width: 60%;
+    width: 68%;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -606,6 +617,86 @@ cancel(){
   align-items: center;
 }
 
+.bottom_right1{
+  width: calc(100% - 5%);
+  height: 100%;
+
+  display: flex;
+  margin-left:100PX;
+
+  align-items: center;
+  flex-direction: column;
+
+
+
+.bottom_top1{
+
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    z-index: 99;
+
+left:6%;
+    background: #2c3643;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+
+}
+
+  .ziluyou1 {
+    width: calc(100% - 1%);
+    height: 100%;
+    position: relative;
+    top: 8%;
+
+    margin-top: 10px;
+    background: white;
+  }
+
+
+
+.dianjis1 {
+  width: 8%;
+  height: 100%;
+  font-size: 15px;
+  margin: 0 5px 0 0;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+}
+
+
+
+.dianji2 {
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  margin: 0 10px;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.dianji3 {
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  margin: 0 10px;
+  color: #2c3643;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+
 .bottom_right {
   width: calc(100% - 14%);
   height: 100%;
@@ -619,7 +710,7 @@ cancel(){
     width: 100%;
     height: 50px;
     position: fixed;
-    z-index: 999;
+    z-index: 99;
 
 left:14.1%;
     background: #2c3643;
@@ -674,7 +765,7 @@ left:14.1%;
 
 .cebian {
   height: 100%;
-  width: 14.2%;
+  width: 14.8%;
   position: fixed;
   z-index: 999;
   background: #2c3643;
@@ -696,5 +787,22 @@ left:14.1%;
 
 .bs:hover {
   color: #3399ff;
+}
+
+
+.ivu-select-dropdown{
+
+z-index: 999;
+
+
+}
+
+
+.top_zhi:hover{
+  width: 100%;
+padding: 40px  10px;
+background: black;
+
+
 }
 </style>
